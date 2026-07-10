@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>CSS Bunny Princess v3</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f4f5ff;
+    font-family: system-ui, sans-serif;
+  }
+
+  .bunny-wrapper {
+    position: relative;
+    width: 260px;
+    height: 380px;
+  }
+
+  .label {
+    position: absolute;
+    top: -40px;
+    width: 100%;
+    text-align: center;
+    color: #555;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  .bunny {
+    position: relative;
+    width: 260px;
+    height: 380px;
+  }
+
+  /* ------- 귀 ------- */
+  .ear {
+    position: absolute;
+    width: 70px;
+    height: 160px;
+    background: #fff;
+    border: 3px solid #333;
+    border-radius: 60px;
+    top: 20px;
+    z-index: 0;
+  }
+  .ear-left {
+    left: 42px;
+    transform: rotate(-4deg);
+  }
+  .ear-right {
+    right: 42px;
+    transform: rotate(4deg);
+  }
+  .ear-inner {
+    position: absolute;
+    inset: 24px 16px 18px 16px;
+    background: #ffd7ed;
+    border-radius: 999px;
+  }
+
+  /* ------- 왕관 ------- */
+  .crown {
+    position: absolute;
+    width: 110px;
+    height: 48px;
+    background: #ffd93b;
+    top: 92px;
+    left: 50%;
+    transform: translateX(-50%);
+    clip-path: polygon(
+      0 100%,
+      10% 40%,
+      26% 100%,
+      42% 35%,
+      58% 100%,
+      74% 40%,
+      90% 100%,
+      100% 100%
+    );
+    border: 3px solid #f0b000;
+    z-index: 2;
+  }
+
+  .crown-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    top: 6px;
+  }
+  .crown-dot.left {
+    left: 23px;
+    background: #ff9ec5;
+  }
+  .crown-dot.mid {
+    left: 50%;
+    transform: translateX(-50%);
+    background: #79d6ff;
+  }
+  .crown-dot.right {
+    right: 23px;
+    background: #98ff70;
+  }
+
+  /* ------- 머리 ------- */
+  .head {
+    position: absolute;
+    width: 190px;
+    height: 155px;
+    background: #fff;
+    border: 3px solid #333;
+    border-radius: 60% 60% 55% 55%;
+    top: 115px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .eye {
+    position: absolute;
+    width: 12px;
+    height: 22px;
+    background: #333;
+    border-radius: 999px;
+    top: 54px;
+  }
+  .eye-left { left: 60px; }
+  .eye-right { right: 60px; }
+
+  .nose {
+    position: absolute;
+    width: 12px;
+    height: 10px;
+    background: #ff8fbd;
+    border-radius: 8px;
+    top: 73px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .mouth {
+    position: absolute;
+    width: 28px;
+    height: 16px;
+    border-bottom: 3px solid #333;
+    border-radius: 0 0 28px 28px;
+    top: 82px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .cheek {
+    position: absolute;
+    width: 18px;
+    height: 13px;
+    background: #ffd1e4;
+    border-radius: 999px;
+    top: 73px;
+  }
+  .cheek-left { left: 34px; }
+  .cheek-right { right: 34px; }
+
+  /* ------- 몸통 ------- */
+  .body {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background: #ff9ec5;
+    border: 3px solid #333;
+    border-radius: 50px 50px 60px 60px;
+    top: 220px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .upper-dress {
+    position: absolute;
+    width: 100%;
+    height: 55px;
+    background: #ffd3ea;
+    top: 0;
+  }
+
+  .skirt {
+    position: absolute;
+    width: 100%;
+    height: 70%;
+    background: #ff4da9;
+    bottom: 0;
+  }
+
+  .collar-arc {
+    position: absolute;
+    width: 120px;
+    height: 60px;
+    border-radius: 120px 120px 0 0;
+    background: #ffdbe9;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .gem {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #7ae9ff;
+    border: 3px solid #ffffff;
+    box-shadow: 0 0 4px rgba(0,0,0,0.15);
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* ------- 팔 / 다리 ------- */
+  .arm {
+    position: absolute;
+    width: 44px;
+    height: 70px;
+    background: #ff9ec5;
+    border: 3px solid #333;
+    border-radius: 25px;
+    top: 252px;
+    z-index: 2;
+  }
+  .arm-left {
+    left: 44px;
+  }
+  .arm-right {
+    right: 44px;
+  }
+
+  .foot-wrap {
+    position: absolute;
+    width: 80px;
+    height: 60px;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+
+  .foot {
+    position: absolute;
+    width: 34px;
+    height: 52px;
+    background: #fff;
+    border-radius: 999px;
+    border: 3px solid #333;
+    bottom: 0;
+  }
+  .foot-left { left: 4px; }
+  .foot-right { right: 4px; }
+
+  /* ------- 그림자 ------- */
+  .shadow {
+    position: absolute;
+    width: 180px;
+    height: 26px;
+    background: rgba(0,0,0,0.08);
+    border-radius: 50%;
+    filter: blur(7px);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+  }
+</style>
+</head>
+<body>
+<div class="bunny-wrapper">
+  <div class="label">CSS Bunny Princess</div>
+  <div class="bunny">
+    <!-- 귀 -->
+    <div class="ear ear-left"><div class="ear-inner"></div></div>
+    <div class="ear ear-right"><div class="ear-inner"></div></div>
+
+    <!-- 왕관 -->
+    <div class="crown">
+      <div class="crown-dot left"></div>
+      <div class="crown-dot mid"></div>
+      <div class="crown-dot right"></div>
+    </div>
+
+    <!-- 머리 -->
+    <div class="head">
+      <div class="eye eye-left"></div>
+      <div class="eye eye-right"></div>
+      <div class="nose"></div>
+      <div class="mouth"></div>
+      <div class="cheek cheek-left"></div>
+      <div class="cheek cheek-right"></div>
+    </div>
+
+    <!-- 몸통 & 옷 -->
+    <div class="body">
+      <div class="upper-dress"></div>
+      <div class="collar-arc"></div>
+      <div class="gem"></div>
+      <div class="skirt"></div>
+    </div>
+
+    <!-- 팔 -->
+    <div class="arm arm-left"></div>
+    <div class="arm arm-right"></div>
+
+    <!-- 발 -->
+    <div class="foot-wrap">
+      <div class="foot foot-left"></div>
+      <div class="foot foot-right"></div>
+    </div>
+
+    <!-- 그림자 -->
+    <div class="shadow"></div>
+  </div>
+</div>
+</body>
+</html>
